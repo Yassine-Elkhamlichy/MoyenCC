@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Calcule Moyen CC</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <header class="bg-light">
+        <a href="#" class="logo">Calcule Moyen CC (PC)</a>
+        <nav class="navbar">
+            <a href="./2BacSm.html">2 Bac SM</a>
+            <a href="./2BacPc.html">2 Bac PC</a>
+            <a href="./index.html">2 Bac SVT</a>
+        </nav>
+        <div class="icons">
+            <i class="fas fa-bars" id="menu-bars"></i>
+        </div>
+    </header>
+    <div class="container mt-2">
+        <table class="table table-hover table-striped">
+            <thead>
+            <tr>
+                <th scope="col">matière</th>
+                <th scope="col">1<sup>ere</sup>Note</th>
+                <th scope="col">2<sup>eme</sup>Note</th>
+                <th scope="col">3<sup>eme</sup>Note</th>
+                <th scope="col">4<sup>eme</sup>Note</th>
+                <th scope="col">5<sup>eme</sup>Note</th>
+                <th scope="col">calculer</th>
+                <th scope="col">moyen</th>
+                <th scope="col">coeff</th>
+                <th scope="col">moyen * coeff</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td colspan="10">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="ChTrad" onchange="checkTrad();">
+                        <label class="form-check-label" for="ChTrad"><small>(cocher si vous n'avez pas la traduction comme matière)</small></label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">E.I</th>
+                <td><input type="number" min="0" max="20" class="Ei form-control d-inline-block" id="NoteEi1" placeholder="1ere"></td>
+                <td><input type="number" min="0" max="20" class="Ei form-control d-inline-block" id="NoteEi2" placeholder="2eme"></td>
+                <td><input type="number" min="0" max="20" class="Ei form-control d-inline-block" id="NoteEi3" placeholder="3eme"></td>
+                <td></td>
+                <td></td>
+                <td><button class="btn btn-light" onclick="calculerEI();"><i class="far fa-check-circle text-info fs-5"></i></button></td>
+                <td><input type="number" class="form-control d-inline-block" id="MoyenEi" placeholder="Moyen" disabled></td>
+                <td><input type="number" class="form-control d-inline-block" style="width: 40px;" value="2" disabled></td>
+                <td><input type="number" class="form-control d-inline-block" id="MoyenEiC" placeholder="Moy*Coeff" disabled></td>
+            </tr>
+            <tr>
+                <th scope="row">Sport</th>
+                <td><input type="number" min="0" max="20" class="Sport form-control d-inline-block" id="NoteSport1" placeholder="1ere"></td>
+                <td><input type="number" min="0" max="20" class="Sport form-control d-inline-block" id="NoteSport2" placeholder="2eme"></td>
+                <td><input type="number" min="0" max="20" class="Sport form-control d-inline-block" id="NoteSport3" placeholder="3eme"></td>
+                <td></td>
+                <td></td>
+                <td><button class="btn btn-light" onclick="calculerSport()"><i class="far fa-check-circle text-info fs-5"></i></button></td>
+                <td><input type="number" class="form-control d-inline-block" id="MoyenSport" placeholder="Moyen" disabled></td>
+                <td><input type="number" class="form-control d-inline-block" style="width: 40px;" value="4" disabled></td>
+                <td><input type="number" class="form-control d-inline-block" id="MoyenSportC" placeholder="Moy*Coeff" disabled></td>
+            </tr>
+            <tr>
+                <th scope="row">Math</th>
+                <td><input type="number" min="0" max="20" class="Math form-control d-inline-block" id="NoteMath1" placeholder="1ere"></td>
+                <td><input type="number" min="0" max="20" class="Math form-control d-inline-block" id="NoteMath2" placeholder="2eme"></td>
+                <td><input type="number" min="0" max="20" class="Math form-control d-inline-block" id="NoteMath3" placeholder="3eme"></td>
+                <td></td>
+                <td></td>
+                <td><button class="btn btn-light" onclick="calculerMath()"><i class="far fa-check-circle text-info fs-5"></i></button></td>
+                <td><input type="number" class="form-control d-inline-block" id="MoyenMath" placeholder="Moyen" disabled></td>
+                <td><input type="number" class="form-control d-inline-block" style="width: 40px;" value="7" disabled></td>
+                <td><input type="number" class="form-control d-inline-block" id="MoyenMathC" placeholder="Moy*Coeff" disabled></td>
+            </tr>
+            <tr>
+                <th scope="row">Philosophie</th>
+                <td><input type="number" min="0" max="20" class="Philo form-control d-inline-block" id="NotePhilo1" placeholder="1ere"></td>
+                <td><input type="number" min="0" max="20" class="Philo form-control d-inline-block" id="NotePhilo2" placeholder="2eme"></td>
+                <td><input type="number" min="0" max="20" class="Philo form-control d-inline-block" id="NotePhilo3" placeholder="3eme"></td>
+                <td></td>
+                <td></td>
+                <td><button class="btn btn-light" onclick="calculerPhilo()"><i class="far fa-check-circle text-info fs-5"></i></button></td>
+                <td><input type="number" class="form-control d-inline-block" id="MoyenPhilo" placeholder="Moyen" disabled></td>
+                <td><input type="number" class="form-control d-inline-block" style="width: 40px;" value="2" disabled></td>
+                <td><input type="number" class="form-control d-inline-block" id="MoyenPhiloC" placeholder="Moy*Coeff" disabled></td>
+            </tr>
+            <tr>
+                <th scope="row">Physique</th>
+                <td><input type="number" min="0" max="20" class="Physic form-control d-inline-block" id="NotePhysic1" placeholder="1ere"></td>
+                <td><input type="number" min="0" max="20" class="Physic form-control d-inline-block" id="NotePhysic2" placeholder="2eme"></td>
+                <td><input type="number" min="0" max="20" class="Physic form-control d-inline-block" id="NotePhysic3" placeholder="3eme"></td>
+                <td><input type="number" min="0" max="20" class="Physic form-control d-inline-block" id="NotePhysic4" placeholder="4eme"></td>
+                <td></td>
+                <td><button class="btn btn-light" onclick="calculerPhysic()"><i class="far fa-check-circle text-info fs-5"></i></button></td>
+                <td><input type="number" class="form-control d-inline-block" id="MoyenPhysic" placeholder="Moyen" disabled></td>
+                <td><input type="number" class="form-control d-inline-block" style="width: 40px;" value="7" disabled></td>
+                <td><input type="number" class="form-control d-inline-block" id="MoyenPhysicC" placeholder="Moy*Coeff" disabled></td>
+            </tr>
+            <tr>
+                <th scope="row">Anglais</th>
+                <td><input type="number" min="0" max="20" class="Anglais form-control d-inline-block" id="NoteAnglais1" placeholder="1ere"></td>
+                <td><input type="number" min="0" max="20" class="Anglais form-control d-inline-block" id="NoteAnglais2" placeholder="2eme"></td>
+                <td><input type="number" min="0" max="20" class="Anglais form-control d-inline-block" id="NoteAnglais3" placeholder="3eme"></td>
+                <td></td>
+                <td></td>
+                <td><button class="btn btn-light" onclick="calculerAnglais()"><i class="far fa-check-circle text-info fs-5"></i></button></td>
+                <td><input type="number" class="form-control d-inline-block" id="MoyenAnglais" placeholder="Moyen" disabled></td>
+                <td><input type="number" class="form-control d-inline-block" style="width: 40px;" value="2" disabled></td>
+                <td><input type="number" class="form-control d-inline-block" id="MoyenAnglaisC" placeholder="Moy*Coeff" disabled></td>
+            </tr>
+            <tr>
+                <th scope="row">Arabe</th>
+                <td><input type="number" min="0" max="20" class="Arabe form-control d-inline-block" id="NoteArabe1" placeholder="1ere"></td>
+                <td><input type="number" min="0" max="20" class="Arabe form-control d-inline-block" id="NoteArabe2" placeholder="2eme"></td>
+                <td><input type="number" min="0" max="20" class="Arabe form-control d-inline-block" id="NoteArabe3" placeholder="3eme"></td>
+                <td></td>
+                <td></td>
+                <td><button class="btn btn-light" onclick="calculerArabe()"><i class="far fa-check-circle text-info fs-5"></i></button></td>
+                <td><input type="number" class="form-control d-inline-block" id="MoyenArabe" placeholder="Moyen" disabled></td>
+                <td><input type="number" class="form-control d-inline-block" style="width: 40px;" value="2" disabled></td>
+                <td><input type="number" class="form-control d-inline-block" id="MoyenArabeC" placeholder="Moy*Coeff" disabled></td>
+            </tr>
+            <tr>
+                <th scope="row">Français</th>
+                <td><input type="number" min="0" max="20" class="Francais form-control d-inline-block" id="NoteFrancais1" placeholder="1ere"></td>
+                <td><input type="number" min="0" max="20" class="Francais form-control d-inline-block" id="NoteFrancais2" placeholder="2eme"></td>
+                <td><input type="number" min="0" max="20" class="Francais form-control d-inline-block" id="NoteFrancais3" placeholder="3eme"></td>
+                <td><input type="number" min="0" max="20" class="Francais form-control d-inline-block" id="NoteFrancais4" placeholder="4eme"></td>
+                <td><input type="number" min="0" max="20" class="Francais form-control d-inline-block" id="NoteFrancais5" placeholder="5eme"></td>
+                <td><button class="btn btn-light" onclick="calculerFrancais()"><i class="far fa-check-circle text-info fs-5"></i></button></td>
+                <td><input type="number" class="form-control d-inline-block" id="MoyenFrancais" placeholder="Moyen" disabled></td>
+                <td><input type="number" class="form-control d-inline-block" style="width: 40px;" value="4" disabled></td>
+                <td><input type="number" class="form-control d-inline-block" id="MoyenFrancaisC" placeholder="Moy*Coeff" disabled></td>
+            </tr>
+            <tr>
+                <th scope="row">S.V.T</th>
+                <td><input type="number" min="0" max="20" class="Svt form-control d-inline-block" id="NoteSvt1" placeholder="1ere"></td>
+                <td><input type="number" min="0" max="20" class="Svt form-control d-inline-block" id="NoteSvt2" placeholder="2eme"></td>
+                <td><input type="number" min="0" max="20" class="Svt form-control d-inline-block" id="NoteSvt3" placeholder="3eme"></td>
+                <td></td>
+                <td></td>
+                <td><button class="btn btn-light" onclick="calculerSvt()"><i class="far fa-check-circle text-info fs-5"></i></button></td>
+                <td><input type="number" class="form-control d-inline-block" id="MoyenSvt" placeholder="Moyen" disabled></td>
+                <td><input type="number" class="form-control d-inline-block" style="width: 40px;" value="5" disabled></td>
+                <td><input type="number" class="form-control d-inline-block" id="MoyenSvtC" placeholder="Moy*Coeff" disabled></td>
+            </tr>
+            <tr id="trad">
+                <th scope="row">Traduction</th>
+                <td><input type="number" min="0" max="20" class="Traduction form-control d-inline-block" id="NoteTraduction1" placeholder="1ere"></td>
+                <td><input type="number" min="0" max="20" class="Traduction form-control d-inline-block" id="NoteTraduction2" placeholder="2eme"></td>
+                <td><input type="number" min="0" max="20" class="Traduction form-control d-inline-block" id="NoteTraduction3" placeholder="3eme"></td>
+                <td></td>
+                <td></td>
+                <td><button class="btn btn-light" onclick="calculerTraduction()"><i class="far fa-check-circle text-info fs-5"></i></button></td>
+                <td><input type="number" min="0" max="20" class="form-control d-inline-block" id="MoyenTraduction" placeholder="Moyen" disabled></td>
+                <td><input type="number" min="0" max="20" class="form-control d-inline-block" style="width: 40px;" value="4" disabled></td>
+                <td><input type="number" min="0" max="20" class="form-control d-inline-block" id="MoyenTraductionC" placeholder="Moy*Coeff" disabled></td>
+            </tr>
+            <tr>
+                <th scope="row">Discipline</th>
+                <td><input type="number" class="Discipline form-control d-inline-block" id="NoteDiscipline1" placeholder="1ere"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><button class="btn btn-light" onclick="calculerDiscipline()"><i class="far fa-check-circle text-info fs-5"></i></button></td>
+                <td><input type="number" min="0" max="20" class="form-control d-inline-block" id="MoyenDiscipline" placeholder="Moyen" disabled></td>
+                <td><input type="number" min="0" max="20" class="form-control d-inline-block" style="width: 40px;" value="1" disabled></td>
+                <td><input type="number" min="0" max="20" class="form-control d-inline-block" id="MoyenDisciplineC" placeholder="Moy*Coeff" disabled></td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="row mb-5">
+            <div class="col-12 d-flex justify-content-around">
+                <input type="button" value="Calculer" class="btn btn-info" onclick="calculeMG()" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <span>
+                    Moyen General : <input type="number" id="MG" class="form-control d-inline-block" readonly>
+                </span>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <h4 id="result"></h4>
+            <div class="firework">
+                <canvas id="Canvas">
+                </canvas>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+    <script>
+        function firework(){
+            var c = document.getElementById("Canvas");
+            var ctx = c.getContext("2d");
+            var cwidth, cheight;
+            var shells = [];
+            var pass= [];
+            var colors = ['#FF5252', '#FF4081', '#E040FB', '#7C4DFF', '#536DFE', '#448AFF', '#40C4FF', '#18FFFF', '#64FFDA', '#69F0AE', '#B2FF59', '#EEFF41', '#FFFF00', '#FFD740', '#FFAB40', '#FF6E40'];
+            window.onresize = function() { reset(); }
+            reset();
+            function reset() {
+                cwidth = window.innerWidth;
+                cheight = window.innerHeight;
+                c.width = cwidth;
+                c.height = cheight;
+            }
+            function newShell() {
+                var left = (Math.random() > 0.5);
+                var shell = {};
+                shell.x = (1*left);
+                shell.y = 1;
+                shell.xoff = (0.01 + Math.random() * 0.007) * (left ? 1 : -1);
+                shell.yoff = 0.01 + Math.random() * 0.007;
+                shell.size = Math.random() * 6 + 3;
+                shell.color = colors[Math.floor(Math.random() * colors.length)];
+                shells.push(shell);
+            }
+            function newPass(shell) {
+                var pasCount = Math.ceil(Math.pow(shell.size, 2) * Math.PI);
+                for (i = 0; i < pasCount; i++) {
+                var pas = {};
+                pas.x = shell.x * cwidth;
+                pas.y = shell.y * cheight;
+                var a = Math.random() * 4;
+                var s = Math.random() * 10;            
+                    pas.xoff = s *  Math.sin((5 - a) * (Math.PI / 2));
+                    pas.yoff = s *  Math.sin(a * (Math.PI / 2));
+                pas.color = shell.color;
+                pas.size = Math.sqrt(shell.size);
+                if (pass.length < 1000) { pass.push(pas); }
+                }
+            }
+            var lastRun = 0;
+            Run();
+            function Run() {
+                var dt = 1;
+                if (lastRun != 0) { dt = Math.min(50, (performance.now() - lastRun)); }
+                lastRun = performance.now();
+                //ctx.clearRect(0, 0, cwidth, cheight);
+                ctx.fillStyle = "rgba(0,0,0,0.25)";
+                ctx.fillRect(0, 0, cwidth, cheight);
+                if ((shells.length < 10) && (Math.random() > 0.96)) { newShell(); }
+                for (let ix in shells) {
+                    var shell = shells[ix];
+                    ctx.beginPath();
+                    ctx.arc(shell.x * cwidth, shell.y * cheight, shell.size, 0, 2 * Math.PI);
+                    ctx.fillStyle = shell.color;
+                    ctx.fill();
+                    shell.x -= shell.xoff;
+                    shell.y -= shell.yoff;
+                    shell.xoff -= (shell.xoff * dt * 0.001);
+                    shell.yoff -= ((shell.yoff + 0.2) * dt * 0.00005);
+                    if (shell.yoff < -0.005) {
+                        newPass(shell);
+                        shells.splice(ix, 1);
+                    }
+                }
+                for (let ix in pass) {
+                var pas = pass[ix];
+                ctx.beginPath();
+                ctx.arc(pas.x, pas.y, pas.size, 0, 2 * Math.PI);
+                ctx.fillStyle = pas.color;
+                ctx.fill();
+                pas.x -= pas.xoff;
+                pas.y -= pas.yoff;
+                pas.xoff -= (pas.xoff * dt * 0.001);
+                pas.yoff -= ((pas.yoff + 5) * dt * 0.0005);
+                pas.size -= (dt * 0.002 * Math.random())
+                    if ((pas.y > cheight)  || (pas.y < -50) || (pas.size <= 0)) {
+                        pass.splice(ix, 1);
+                    }
+                }
+                requestAnimationFrame(Run);
+            }
+  }
+
+        function checkTrad(){
+            var checkboxTrad = document.getElementById('ChTrad');
+            TradSection = document.getElementById('trad');
+            if(checkboxTrad.checked){
+                TradSection.style.display="none";
+            }else{
+                TradSection.style.display="table-row"; 
+            }
+        }
+
+        function calculerEI(){
+            var NotesEi = document.getElementsByClassName('Ei');
+            var Note=0;
+            for(let i=0; i<NotesEi.length; i++){
+                if(NotesEi[i].value < 0 || NotesEi[i].value > 20){
+                    alert("La note N°"+ parseInt(i+1)+" doit etre entre 0 et 20");
+                    NotesEi[i].focus();break;
+                }else{
+                    Note = Note + parseFloat(NotesEi[i].value);
+                    var moyen = Note / 3;
+                    //alert('le moyen du Education islamique est : '+ moyen);
+                    document.getElementById('MoyenEi').value = moyen;
+                    document.getElementById('MoyenEiC').value = moyen*2;
+                }
+            }
+            return moyen*2;
+        }
+
+        function calculerSport(){
+            var NotesSport = document.getElementsByClassName('Sport');
+            var Note=0;
+            for(let i=0; i<NotesSport.length; i++){
+                if(NotesSport[i].value < 0 || NotesSport[i].value > 20){
+                    alert("La note N°"+ parseInt(i+1)+" doit etre entre 0 et 20");
+                    NotesSport[i].focus();break;
+                }else{
+                    Note = Note + parseFloat(NotesSport[i].value);
+                    var moyen = Note / 3;
+                    //alert('le moyen du Sport est : '+ moyen);
+                    document.getElementById('MoyenSport').value = moyen;
+                    document.getElementById('MoyenSportC').value = moyen*4;
+                }
+            }
+            return moyen*4;
+        }
+        
+        function calculerMath(){
+            var NotesMath = document.getElementsByClassName('Math');
+            var Note=0;
+            for(let i=0; i<NotesMath.length; i++){
+                if(NotesMath[i].value < 0 || NotesMath[i].value > 20){
+                    alert("La note N°"+ parseInt(i+1)+" doit etre entre 0 et 20");
+                    NotesMath[i].focus();break;
+                }else{
+                    Note = Note + parseFloat(NotesMath[i].value);
+                    var moyen = Note / 3;
+                    //alert('le moyen du Math est : '+ moyen);
+                    document.getElementById('MoyenMath').value = moyen;
+                    document.getElementById('MoyenMathC').value = moyen*7;
+                }
+            }
+            return moyen*7;
+        }
+
+        function calculerPhilo(){
+            var NotesPhilo = document.getElementsByClassName('Philo');
+            var Note=0;
+            for(let i=0; i<NotesPhilo.length; i++){
+                if(NotesPhilo[i].value < 0 || NotesPhilo[i].value > 20){
+                    alert("La note N°"+ parseInt(i+1)+" doit etre entre 0 et 20");
+                    NotesPhilo[i].focus();break;
+                }else{
+                    Note = Note + parseFloat(NotesPhilo[i].value);
+                    var moyen = Note / 3;
+                    //alert('le moyen du Philosophie est : '+ moyen);
+                    document.getElementById('MoyenPhilo').value = moyen;
+                    document.getElementById('MoyenPhiloC').value = moyen*2;
+                }
+            }
+            return moyen*2;
+        }
+
+        function calculerPhysic(){
+            var NotesPhysic = document.getElementsByClassName('Physic');
+            var Note=0;
+            for(let i=0; i<NotesPhysic.length; i++){
+                if(NotesPhysic[i].value < 0 || NotesPhysic[i].value > 20){
+                    alert("La note N°"+ parseInt(i+1)+" doit etre entre 0 et 20");
+                    NotesPhysic[i].focus();break;
+                }else{
+                    Note = Note + parseFloat(NotesPhysic[i].value);
+                    var moyen = Note / 4;
+                    //alert('le moyen du Physique est : '+ moyen);
+                    document.getElementById('MoyenPhysic').value = moyen;
+                    document.getElementById('MoyenPhysicC').value = moyen*7;
+                }
+            }
+            return moyen*7;
+        }
+        
+        function calculerAnglais(){
+            var NotesAnglais = document.getElementsByClassName('Anglais');
+            var Note=0;
+            for(let i=0; i<NotesAnglais.length; i++){
+                if(NotesAnglais[i].value < 0 || NotesAnglais[i].value > 20){
+                    alert("La note N°"+ parseInt(i+1)+" doit etre entre 0 et 20");
+                    NotesAnglais[i].focus();break;
+                }else{
+                    Note = Note + parseFloat(NotesAnglais[i].value);
+                    var moyen = Note / 3;
+                    //alert('le moyen du Anglais est : '+ moyen);
+                    document.getElementById('MoyenAnglais').value = moyen;
+                    document.getElementById('MoyenAnglaisC').value = moyen*2;
+                }
+            }
+            return moyen*2;
+        }
+        
+        function calculerArabe(){
+            var NotesArabe = document.getElementsByClassName('Arabe');
+            var Note=0;
+            for(let i=0; i<NotesArabe.length; i++){
+                if(NotesArabe[i].value < 0 || NotesArabe[i].value > 20){
+                    alert("La note N°"+ parseInt(i+1)+" doit etre entre 0 et 20");
+                    NotesArabe[i].focus();break;
+                }else{
+                    Note = Note + parseFloat(NotesArabe[i].value);
+                    var moyen = Note / 3;
+                    //alert('le moyen du Arabe est : '+ moyen);
+                    document.getElementById('MoyenArabe').value = moyen;
+                    document.getElementById('MoyenArabeC').value = moyen*2;
+                }
+            }
+            return moyen*2;
+        }
+        
+        function calculerFrancais(){
+            var NotesFrancais = document.getElementsByClassName('Francais');
+            var Note=0;
+            for(let i=0; i<NotesFrancais.length; i++){
+                if(NotesFrancais[i].value < 0 || NotesFrancais[i].value > 20){
+                    alert("La note N°"+ parseInt(i+1)+" doit etre entre 0 et 20");
+                    NotesFrancais[i].focus();break;
+                }else{
+                    Note = Note + parseFloat(NotesFrancais[i].value);
+                    var moyen = Note / 5;
+                    //alert('le moyen du Français est : '+ moyen);
+                    document.getElementById('MoyenFrancais').value = moyen;
+                    document.getElementById('MoyenFrancaisC').value = moyen*4;
+                }
+            }
+            return moyen*4;
+        }
+
+        function calculerSvt(){
+            var NotesSvt = document.getElementsByClassName('Svt');
+            var Note=0;
+            for(let i=0; i<NotesSvt.length; i++){
+                if(NotesSvt[i].value < 0 || NotesSvt[i].value > 20){
+                    alert("La note N°"+ parseInt(i+1)+" doit etre entre 0 et 20");
+                    NotesSvt[i].focus();break;
+                }else{
+                    Note = Note + parseFloat(NotesSvt[i].value);
+                    var moyen = Note / 3;
+                    //alert('le moyen du S.V.T est : '+ moyen);
+                    document.getElementById('MoyenSvt').value = moyen;
+                    document.getElementById('MoyenSvtC').value = moyen*5;
+                }
+            }
+            return moyen*5;
+        }
+        
+        function calculerDiscipline(){
+            var NoteDiscipline = document.getElementById('NoteDiscipline1');
+            if(NoteDiscipline.value < 0 || NoteDiscipline.value > 20){
+                alert ("la note du discipline doit etre entre 0 et 20 ");
+                NoteDiscipline.focus();
+            }else{
+                var Note = parseFloat(NoteDiscipline.value);
+                //alert('le moyen du Discipline est : '+ Note);
+                document.getElementById('MoyenDiscipline').value = Note;
+                document.getElementById('MoyenDisciplineC').value = Note*1;
+            }
+            return Note;
+        }
+        
+        function calculerTraduction(){
+            var NotesTraduction = document.getElementsByClassName('Traduction');
+            var Note=0;
+            for(let i=0; i<NotesTraduction.length; i++){
+                if(NotesTraduction[i].value < 0 || NotesTraduction[i].value > 20){
+                    alert("La note N°"+ parseInt(i+1)+" doit etre entre 0 et 20");
+                    NotesTraduction[i].focus();break;
+                }else{
+                    Note = Note + parseFloat(NotesTraduction[i].value);
+                    var moyen = Note / 3;
+                    //alert('le moyen du Traduction est : '+ moyen);
+                    document.getElementById('MoyenTraduction').value = moyen;
+                    document.getElementById('MoyenTraductionC').value = moyen*4;
+                }
+            }
+            return moyen*4;
+        }
+        
+        function calculeMG(){
+            var checkboxTrad = document.getElementById('ChTrad');
+            moyenEI = calculerEI();
+            moyenSport = calculerSport();
+            moyenMath = calculerMath();
+            moyenPhilo = calculerPhilo();
+            moyenPhysic = calculerPhysic();
+            moyenAnglais = calculerAnglais();
+            moyenArabe = calculerArabe();
+            moyenFrancais = calculerFrancais();
+            moyenSvt = calculerSvt();
+            moyenDiscipline = calculerDiscipline();
+            if(checkboxTrad.checked){
+                var total = moyenEI + moyenSport + moyenMath + moyenPhilo + moyenPhysic + moyenAnglais + moyenArabe + moyenFrancais + moyenSvt + moyenDiscipline;
+                var result = parseFloat(total / 36);
+                document.getElementById('MG').value = result.toFixed(2);
+                if(result>=10){
+                    document.getElementById('result').textContent = "Congratulation votre moyen est : "+ result.toFixed(2);
+                    firework();
+                }else if(result<10){
+                    document.getElementById('result').textContent = "Malheuresement votre moyen est : "+ result.toFixed(2);
+                    document.getElementById('Canvas').visibility="hidden";
+                }
+            }else{
+                moyenTraduction = calculerTraduction();
+                var total = moyenEI + moyenSport + moyenMath + moyenPhilo + moyenPhysic + moyenAnglais + moyenArabe + moyenFrancais + moyenSvt + moyenDiscipline + moyenTraduction;
+                var result = parseFloat(total / 40);
+                document.getElementById('MG').value = result.toFixed(2);
+                if(result>=10){
+                    document.getElementById('result').textContent = "Congratulation votre moyen est : "+ result.toFixed(2);
+                    firework();
+                }else if(result<10){
+                    document.getElementById('result').textContent = "Malheuresement votre moyen est : "+ result.toFixed(2);
+                    document.getElementById('Canvas').visibility="hidden";
+                }
+            }
+        }
+
+        let menu = document.querySelector('#menu-bars');
+        let navbar = document.querySelector('.navbar');
+
+        menu.onclick = () =>{
+        menu.classList.toggle('fa-times');
+        navbar.classList.toggle('active');
+        }
+    </script>
+
+    <script src="https://kit.fontawesome.com/8a930d5c38.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
